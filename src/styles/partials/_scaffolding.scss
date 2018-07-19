@@ -1,0 +1,36 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.2;
+}
+
+img,
+iframe,
+video,
+object {
+  max-width: 100%;
+  height: auto;
+}
+
+// Placeholders and Overflow
+input[placeholder] { text-overflow: ellipsis; }
+::-moz-placeholder { text-overflow: ellipsis; } // FF 19+
+input:-moz-placeholder { text-overflow: ellipsis; }
+
+/* Smooth opacity transition for input placeholder on focus */
+input[placeholder]                     {opacity: 1; transition: opacity .3s ease;}
+input::-webkit-input-placeholder       {opacity: 1; transition: opacity .3s ease;}
+input::-moz-placeholder                {opacity: 1; transition: opacity .3s ease;}
+input:-ms-input-placeholder            {opacity: 1; transition: opacity .3s ease;}
+input:focus::-webkit-input-placeholder {opacity: .5; transition: opacity .3s ease;}
+input:focus::-moz-placeholder          {opacity: .5; transition: opacity .3s ease;}
+input:focus:-ms-input-placeholder      {opacity: .5; transition: opacity .3s ease;}
