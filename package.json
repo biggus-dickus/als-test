@@ -5,12 +5,14 @@
   "private": true,
   "main": "gulpfile.js",
   "readme": "README.md",
+  "repository": "https://github.com/biggus-dickus/als-test.git",
   "scripts": {
     "build": "gulp",
-    "start": "gulp dev"
+    "start": "gulp dev",
+    "scss:lint": "gulp scss:lint"
   },
   "author": "Max Maslenko",
-  "browserslist": "last 2 versions",
+  "browserslist": "last 1 version",
   "dependencies": {
     "autoprefixer": "^7.0.0",
     "browser-sync": "^2.9.6",

@@ -1,0 +1,74 @@
+.order-table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-bottom: 25px;
+
+  th, td {
+    padding: 11px 5px;
+  }
+
+  th:first-child,
+  td.order-table__rowspan-td {
+    padding-left: 22px;
+  }
+
+  th {
+    padding-bottom: 20px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 400;
+    color: fade-out($primary-dark, .6);
+  }
+
+  &__rowspan-td {
+    vertical-align: top;
+  }
+
+  &__checkbox-th,
+  &__buttons-th {
+    width: 5.92%;
+  }
+
+  &__color-th {
+    width: 32%;
+  }
+
+  &__tint-th {
+    width: 31%;
+  }
+
+  &__color-val {
+    display: inline-block;
+    border-bottom: 2px solid fade-out($primary-dark, .85);
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  &__input {
+    width: 100%;
+  }
+
+  &__amount-td {
+    font-size: 0;
+  }
+
+  &__num-input,
+  &__amount {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+  }
+
+  &__num-input {
+    width: 90%;
+    max-width: 55px;
+    text-align: center;
+  }
+
+  &__amount {
+    width: 10%;
+    padding-left: 5px;
+  }
+}

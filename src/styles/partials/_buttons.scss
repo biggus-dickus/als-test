@@ -1,0 +1,66 @@
+.btn {
+  display: inline-block;
+  vertical-align: baseline;
+  padding: .81em 1.13em;
+  border: 0;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.btn:active,
+.remove-btn:active {
+  transform: translateY(1px);
+}
+
+.remove-btn,
+.text-btn {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.remove-btn {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #b7b7b7;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
+
+.text-btn {
+  cursor: pointer;
+
+  &__text {
+    display: inline-block;
+    vertical-align: baseline;
+    border-bottom: 1px dotted currentColor;
+  }
+
+  &--action {
+    color: $theme-var;
+
+    &::before {
+      content: "+";
+      display: inline-block;
+      vertical-align: baseline;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.hidden { display: none; }
+
+.invisible { visibility: hidden; }
+
+.text-left { text-align: left; }
+
+.text-center { text-align: center; }
+
+.text-right { text-align: right; }
+
+%reset-list,
+.reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// Accessible text hiding
+.visually-hidden,
+%sr-only,
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(100%);
+}
+
+// Ellipsis for one-lined text with disabled wrapping
+%ellipsis,
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Word breaking & text hyphenation
+%hyphens,
+.hyphens {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}

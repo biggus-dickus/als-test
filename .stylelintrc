@@ -12,7 +12,7 @@
     "no-unknown-animations": true,
     "number-leading-zero": null,
     "selector-max-specificity": "0,3,2",
-    "selector-no-id": true,
-    "selector-no-type": [true, {"ignore": ["descendant"]}]
+    "selector-max-id": 0,
+    "selector-max-type": 1
   }
 }
