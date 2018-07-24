@@ -1,7 +1,7 @@
 .checkbox-input {
   & + label {
     position: relative;
-    padding-left: 21px;
+    padding-left: 20px;
     cursor: pointer;
 
     &::before,
@@ -13,19 +13,19 @@
     &::before {
       top: 0;
       left: 0;
-      width: 21px;
-      height: 21px;
+      width: 20px;
+      height: 20px;
       border: 2px solid $grey-default;
       border-radius: 4px;
     }
 
     &::after {
-      top: 3px;
+      top: 4px;
       left: 4px;
-      width: 13px;
-      height: 10px;
-      border-left: 2px solid transparent;
-      border-bottom: 2px solid transparent;
+      width: 12px;
+      height: 8px;
+      border-left: 3px solid transparent;
+      border-bottom: 3px solid transparent;
       border-radius: 2px;
       transform: rotate(-45deg);
     }
@@ -43,7 +43,7 @@
 .text-input,
 .select {
   display: inline-block;
-  padding: 3px 8px;
+  padding: 3px 9px;
   height: 30px;
   border: 2px solid $grey-default;
   border-radius: 4px;

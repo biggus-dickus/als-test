@@ -16,10 +16,8 @@ remove_folder () {
     fi;
 }
 
-# Remove 'node' dependencies folders
 remove_folder ${NODE_MODULES_FOLDER}
 
-# Install + build
 npm install
 check_command_success
 npm run build

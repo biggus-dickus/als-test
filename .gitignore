@@ -19,10 +19,12 @@ build
 *.*~
 */**/*.*~
 *.log
+npm-debug.*
 Thumbs.db
 prepros.cfg
 *.sublime*
 *.map
 
 *.ai
+*.pdf
 *.psd

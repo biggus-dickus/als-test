@@ -2,21 +2,29 @@
   width: 100%;
   max-width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
+  text-align: left;
+
+  @media (min-width: $md) {
+    table-layout: fixed;
+  }
 
   th, td {
     padding: 11px 5px;
+
+      label {
+        left: 3px;
+        bottom: 2px;
+      }
   }
 
   th:first-child,
   td.order-table__rowspan-td {
-    padding-left: 22px;
+    padding-left: 18px;
   }
 
   th {
-    padding-bottom: 20px;
-    text-align: left;
+    padding-bottom: 18px;
     font-size: 12px;
     font-weight: 400;
     color: fade-out($primary-dark, .6);
@@ -26,17 +34,29 @@
     vertical-align: top;
   }
 
-  &__checkbox-th,
+  &__checkbox-th {
+    width: 6%;
+  }
+
   &__buttons-th {
-    width: 5.92%;
+    width: 3%;
   }
 
   &__color-th {
-    width: 32%;
+    width: 31.5%;
   }
 
   &__tint-th {
     width: 31%;
+    min-width: 155px;
+  }
+
+  &__amount-th {
+    width: 15.5%;
+  }
+
+  .order-table__amount-th {
+    padding-left: 18px;
   }
 
   &__color-val {
@@ -52,6 +72,11 @@
 
   &__amount-td {
     font-size: 0;
+    text-align: center;
+  }
+
+  .order-table__unit-td {
+    padding-left: 9px;
   }
 
   &__num-input,
@@ -70,5 +95,9 @@
   &__amount {
     width: 10%;
     padding-left: 5px;
+  }
+
+  &__remove {
+    left: 3px;
   }
 }

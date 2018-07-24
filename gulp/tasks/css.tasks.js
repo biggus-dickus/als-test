@@ -1,5 +1,3 @@
-'use strict';
-
 const gulp = require('gulp'),
       path = require('../config').path,
 
@@ -8,7 +6,6 @@ const gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     cmq = require('gulp-combine-mq'),
     cssnano = require('gulp-cssnano'),
-    rimraf = require('rimraf'),
 
     // Sprite generation
     merge = require('merge-stream'),
@@ -73,7 +70,7 @@ gulp.task('img:build', () => {
 
 gulp.task('sprite:build', () => {
   // Generate our spritesheet
-  var spriteData = gulp.src(path.src.sprite).pipe(spritesmith({
+  const spriteData = gulp.src(path.src.sprite).pipe(spritesmith({
     imgName: 'sprite.png',
     cssName: 'sprite.scss',
     imgPath: '../img/sprite/sprite.png', // relative path to sprite.png from generated CSS
@@ -81,11 +78,11 @@ gulp.task('sprite:build', () => {
   }));
 
   // Pipe image stream onto disk
-  var imgStream = spriteData.img
+  const imgStream = spriteData.img
       .pipe(gulp.dest(path.build.sprite));
 
   // Pipe CSS stream onto disk
-  var cssStream = spriteData.css
+  const cssStream = spriteData.css
       .pipe(gulp.dest(path.src.spritesheet));
 
   // Return a merged stream to handle both `end` events
