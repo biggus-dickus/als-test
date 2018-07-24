@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "Art Lebedev Test Assignment for Web Developer",
   "private": true,
-  "main": "gulpfile.js",
+  "main": "src/js/index.js",
   "readme": "README.md",
   "repository": "https://github.com/biggus-dickus/als-test.git",
   "scripts": {
     "build": "gulp",
     "start": "gulp dev",
-    "scss:lint": "gulp scss:lint"
+    "scss:lint": "gulp scss:lint",
+    "eslint": "eslint"
   },
   "author": "Max Maslenko",
   "browserslist": "last 1 version",
@@ -27,14 +28,15 @@
     "gulp-sass": "^2.3.2",
     "gulp-uglify": "^1.5.3",
     "gulp-watch": "^4.3.5",
-    "normalize.css": "^8.0.0",
     "require-dir": "^0.3.1",
     "rimraf": "^2.5.2"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
     "gulp-sourcemaps": "^2.6.0",
     "gulp.spritesmith": "^6.3.0",
     "imagemin-pngquant": "^5.0.1",
+    "normalize.css": "^8.0.0",
     "postcss-reporter": "^3.0.0",
     "postcss-scss": "^0.4.1",
     "stylelint": "^7.10.1"

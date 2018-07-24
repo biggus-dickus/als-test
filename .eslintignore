@@ -1,0 +1,14 @@
+# Directories
+node_modules/**/*
+public/**/*
+build/**/*
+
+# Ignored extensions
+*.css
+*.less
+*.sass
+*.scss
+*.png
+*.jpg
+*.svg
+*.bmp

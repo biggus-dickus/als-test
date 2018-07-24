@@ -1,18 +1,17 @@
 'use strict';
 
 const gulp = require('gulp'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    rigger = require('gulp-rigger'),
-    browserSync = require("browser-sync"),
-    reload = browserSync.reload,
-    sourcemaps = require('gulp-sourcemaps');
+      path = require('../config').path,
 
-var vendorPaths = path.src.vendorJS.join(', ');
+      concat = require('gulp-concat'),
+      uglify = require('gulp-uglify'),
+      rigger = require('gulp-rigger'),
+      browserSync = require("browser-sync"),
+      reload = browserSync.reload,
+      sourcemaps = require('gulp-sourcemaps');
 
-
-gulp.task('js:dev', function() {
-  gulp.src([vendorPaths, path.src.js])
+gulp.task('js:dev', () => {
+  gulp.src(path.src.js)
     .pipe(sourcemaps.init())
     .pipe(concat('all.js'))
     .pipe(sourcemaps.write())
@@ -21,9 +20,9 @@ gulp.task('js:dev', function() {
 });
 
 
-gulp.task('js:prod', function() {
-  gulp.src([vendorPaths, path.src.js])
-    .pipe(concat('all.js'))
+gulp.task('js:prod', () => {
+  gulp.src(path.src.js)
+    .pipe(concat('script.js'))
     .pipe(uglify())
     .pipe(gulp.dest(path.build.js));
 });

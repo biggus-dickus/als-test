@@ -1,6 +1,7 @@
 'use strict';
 
 const gulp = require('gulp'),
+      path = require('../config').path,
 
     // Compiling with bells & whistles
     sass = require('gulp-sass'),
@@ -19,13 +20,13 @@ const gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     reporter = require('postcss-reporter'),
     stylelint = require('stylelint'),
-    scss = require("postcss-scss"),
+    scss = require('postcss-scss'),
 
     // Browsersync
-    browserSync = require("browser-sync");
+    browserSync = require('browser-sync');
 
 
-gulp.task('css:dev', function() {
+gulp.task('css:dev', () => {
   gulp.src(path.src.styles)
       .pipe(sass(
           { sourceComments: true }
@@ -42,7 +43,7 @@ gulp.task('css:dev', function() {
 });
 
 
-gulp.task('css:prod', function() {
+gulp.task('css:prod', () => {
   gulp.src(path.src.styles)
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss([ autoprefixer(
@@ -57,7 +58,7 @@ gulp.task('css:prod', function() {
 });
 
 
-gulp.task('img:build', function() {
+gulp.task('img:build', () => {
   gulp.src(path.src.img)
       .pipe(imagemin({
         progressive: true,
@@ -70,7 +71,7 @@ gulp.task('img:build', function() {
 });
 
 
-gulp.task('sprite:build', function() {
+gulp.task('sprite:build', () => {
   // Generate our spritesheet
   var spriteData = gulp.src(path.src.sprite).pipe(spritesmith({
     imgName: 'sprite.png',
@@ -92,13 +93,13 @@ gulp.task('sprite:build', function() {
 });
 
 
-gulp.task('fonts:build', function() {
+gulp.task('fonts:build', () => {
   gulp.src(path.src.fonts)
       .pipe(gulp.dest(path.build.fonts))
 });
 
 
-gulp.task('scss:lint', function() {
+gulp.task('scss:lint', () => {
   return gulp.src(path.watch.styles)
       .pipe(postcss(
           [

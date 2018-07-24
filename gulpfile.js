@@ -1,51 +1,49 @@
 'use strict';
 
 const gulp = require('gulp'),
+      config = require('./gulp/config').bsConfig,
+      path = require('./gulp/config').path,
+
     requireDir = require('require-dir'),
     watch = require('gulp-watch'),
     rimraf = require('rimraf'),
-    browserSync = require("browser-sync"),
+    browserSync = require('browser-sync'),
     reload = browserSync.reload;
 
-// Config & tasks
-requireDir('./gulp', {recurse: true});
+// Tasks
+requireDir('./gulp/tasks');
 
 
-/**
- * General tasks
- */
-gulp.task('webserver', function () {
+gulp.task('webserver', () => {
   browserSync(config);
 });
 
-gulp.task('clean', function(cb) {
-  rimraf(path.clean, cb);
-});
+gulp.task('clean', (cb) => rimraf(path.clean, cb));
 
-gulp.task('data:copy', function() {
+gulp.task('data:copy', () => {
   gulp.src('src/data/*json')
       .pipe(gulp.dest('build/data/'))
       .pipe(reload({stream: true}));
 });
 
 
-gulp.task('watch', function() {
-  watch([path.watch.html], function() {
+gulp.task('watch', () => {
+  watch([path.watch.html], () => {
     gulp.start('html:dev');
   });
-  watch([path.watch.tpl], function() {
+  watch([path.watch.tpl], () => {
     gulp.start('tpl:dev');
   });
-  watch([path.watch.styles], function() {
+  watch([path.watch.styles], () => {
     gulp.start('css:dev');
   });
-  watch([path.watch.js], function() {
+  watch([path.watch.js], () => {
     gulp.start('js:dev');
   });
-  watch([path.watch.img], function() {
+  watch([path.watch.img], () => {
     gulp.start('img:build');
   });
-  watch([path.watch.fonts], function() {
+  watch([path.watch.fonts], () => {
     gulp.start('fonts:build');
   });
 });
