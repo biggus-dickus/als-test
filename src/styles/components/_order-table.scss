@@ -2,7 +2,6 @@
   width: 100%;
   max-width: 100%;
   border-collapse: collapse;
-  margin-bottom: 30px;
   text-align: left;
 
   @media (min-width: $md) {
@@ -27,7 +26,7 @@
     padding-bottom: 18px;
     font-size: 12px;
     font-weight: 400;
-    color: fade-out($primary-dark, .6);
+    color: fade-out($primaryDark, .6);
   }
 
   &__rowspan-td {
@@ -53,15 +52,20 @@
 
   &__amount-th {
     width: 15.5%;
+    min-width: 60px;
   }
 
   .order-table__amount-th {
-    padding-left: 18px;
+    //padding-left: 18px;
+
+    @media (min-width: $sm) {
+      padding-left: 18px;
+    }
   }
 
   &__color-val {
     display: inline-block;
-    border-bottom: 2px solid fade-out($primary-dark, .85);
+    border-bottom: 2px solid fade-out($primaryDark, .85);
     font-size: 18px;
     line-height: 1.2;
   }

@@ -8,6 +8,10 @@
     justify-content: center;
   }
 
+  &__table {
+    margin-bottom: 30px;
+  }
+
   &__body,
   &__sidebar {
     padding-top: 15px;
@@ -22,7 +26,7 @@
       flex-basis: 100%;
       padding-right: 0;
       padding-bottom: 45px;
-      border-bottom: 2px dotted $theme-var;
+      border-bottom: 2px dotted $themeVar;
     }
   }
 
@@ -30,7 +34,7 @@
     width: 260px;
     padding-bottom: 70px;
     padding-left: 37px;
-    border-left: 2px dotted $theme-var;
+    border-left: 2px dotted $themeVar;
 
     @media (max-width: $md) {
       border-left: 0;
@@ -51,7 +55,7 @@
       left: -10px;
       right: 0;
       height: 4px;
-      background-color: $theme-accent;
+      background-color: $themeAccent;
 
       @media (max-width: $md) {
         left: 0;
@@ -74,7 +78,7 @@
     text-decoration: none;
 
     &:not(&--current) {
-      border-bottom: 1px dotted fade-out($primary-dark, .7);
+      border-bottom: 1px dotted fade-out($primaryDark, .7);
 
       &:hover {
         border-bottom-color: currentColor;
@@ -84,7 +88,7 @@
     &--current {
       position: relative;
       margin-bottom: 5px;
-      color: $theme-color;
+      color: $themeColor;
 
       &::before {
         content: "";
@@ -93,8 +97,8 @@
         left: -20px;
         width: 13px;
         height: 10px;
-        border-left: 2px solid $theme-accent;
-        border-bottom: 2px solid $theme-accent;
+        border-left: 2px solid $themeAccent;
+        border-bottom: 2px solid $themeAccent;
         border-radius: 2px;
         transform: rotate(-45deg);
       }
@@ -105,9 +109,9 @@
     border-radius: 4px;
     margin-top: 25px;
     font-size: 22px;
-    color: $primary-light;
+    color: $primaryLight;
     box-shadow: 0 3px 5px rgba(241, 163, 80, 0.45);
-    background-image: linear-gradient($theme-accent, #f1a34e);
+    background-image: linear-gradient($themeAccent, #f1a34e);
   }
 
   &__add {
