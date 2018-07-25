@@ -10,11 +10,6 @@
 
   th, td {
     padding: 11px 5px;
-
-      label {
-        left: 3px;
-        bottom: 2px;
-      }
   }
 
   th:first-child,
@@ -27,6 +22,11 @@
     font-size: 12px;
     font-weight: 400;
     color: fade-out($primaryDark, .6);
+  }
+
+  &__label {
+    left: 3px;
+    bottom: 2px;
   }
 
   &__rowspan-td {
@@ -56,8 +56,6 @@
   }
 
   .order-table__amount-th {
-    //padding-left: 18px;
-
     @media (min-width: $sm) {
       padding-left: 18px;
     }
