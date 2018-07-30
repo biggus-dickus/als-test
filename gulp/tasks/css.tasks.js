@@ -2,6 +2,7 @@ const gulp = require('gulp'),
       path = require('../config').path,
 
     // Compiling with bells & whistles
+    plumber = require('gulp-plumber'),
     sass = require('gulp-sass'),
     autoprefixer = require('autoprefixer'),
     cmq = require('gulp-combine-mq'),
@@ -25,6 +26,7 @@ const gulp = require('gulp'),
 
 gulp.task('css:dev', () => {
   gulp.src(path.src.styles)
+      .pipe(plumber())
       .pipe(sass(
           { sourceComments: true }
       ).on('error', sass.logError))

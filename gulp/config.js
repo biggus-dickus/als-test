@@ -12,7 +12,7 @@ module.exports = {
         src: {
             html: 'src/*.html',
             tpl: 'src/templates/*.tpl.html',
-            js: 'src/js/**/*.js',
+            js: 'src/js/index.js',
             styles: 'src/styles/*.scss',
             img: 'src/img/**/*.*',
             sprite: 'src/img/sprite-src/*.png',

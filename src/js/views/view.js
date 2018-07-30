@@ -1,4 +1,4 @@
-export default class AbstractView {
+export default class View {
     get template () {
         throw Error('You called the abstract method. Template string must be provided to render the view.');
     }
@@ -13,7 +13,7 @@ export default class AbstractView {
     }
 
     render () {
-        return AbstractView.createElement(this.template);
+        return View.createElement(this.template);
     }
 
     bind () {}
