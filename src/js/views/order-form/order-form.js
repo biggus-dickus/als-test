@@ -6,7 +6,12 @@ export default class OrderForm {
         this._view = new OrderFormView();
     }
 
-    init () {
+    render () {
+        this._view.onClick = (e) => {
+            e.preventDefault();
+            console.dir(e);
+        };
+
         insertTemplate(this._view.element);
     }
 }

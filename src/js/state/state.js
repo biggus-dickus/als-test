@@ -1,5 +1,4 @@
-
-import {INITIAL_STATE} from './data/data';
+import {INITIAL_STATE} from '../data/data';
 
 class AppState {
     constructor (state) {
@@ -11,6 +10,4 @@ class AppState {
     }
 }
 
-const appState = new AppState(INITIAL_STATE);
-
-export default appState;
+export default new AppState(INITIAL_STATE);

@@ -9,8 +9,8 @@
   "scripts": {
     "build": "gulp",
     "start": "gulp dev",
-    "scss:lint": "gulp scss:lint",
-    "eslint": "eslint"
+    "stylelint": "gulp scss:lint",
+    "eslint": "eslint src"
   },
   "author": "Max Maslenko",
   "browserslist": "last 1 version",
