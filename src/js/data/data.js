@@ -13,7 +13,8 @@ export const DICTIONARY = {
     can: 'банка',
     package: 'состав заказа',
     comment: 'комментарий',
-    contactPerson: 'контактное лицо'
+    contactPerson: 'контактное лицо',
+    blue: 'синий'
 };
 
 export const INITIAL_STATE = Object.freeze({
@@ -21,28 +22,32 @@ export const INITIAL_STATE = Object.freeze({
     colors: {
         blue: [
             {
-                tint: SHADES_OF_BLUE['sky-blue'],
+                tint: 'sky-blue',
                 amount: 1,
                 unit: DICTIONARY['L'],
-                container: DICTIONARY.can
+                container: DICTIONARY.can,
+                isChecked: true
             },
             {
-                tint: SHADES_OF_BLUE['light-blue'],
+                tint: 'light-blue',
                 amount: 2,
                 unit: DICTIONARY['L'],
-                container: DICTIONARY.can
+                container: DICTIONARY.can,
+                isChecked: true
             },
             {
-                tint: SHADES_OF_BLUE['deep-blue'],
+                tint: 'deep-blue',
                 amount: 1,
                 unit: DICTIONARY['L'],
-                container: DICTIONARY.can
+                container: DICTIONARY.can,
+                isChecked: true
             },
             {
-                tint: SHADES_OF_BLUE['royal-blue'],
+                tint: 'royal-blue',
                 amount: 3,
                 unit: DICTIONARY['L'],
-                container: DICTIONARY.can
+                container: DICTIONARY.can,
+                isChecked: true
             }
         ]
     }

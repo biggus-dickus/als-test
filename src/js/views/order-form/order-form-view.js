@@ -6,12 +6,19 @@ import tableView from '../components/table';
 import titleView from '../components/title';
 
 export default class OrderFormView extends AbstractView {
+    constructor (state) {
+        super();
+        this._state = state;
+    }
+
     get template () {
+        const {colors} = this._state.props;
+
         return `
         <form action="?" method="get" class="order-form">
             <section class="order-form__body">
-                ${titleView(4)}
-                ${tableView([42])}
+                ${titleView(colors.blue.length)}
+                ${tableView(colors)}
                 ${buttonView()}
             </section>
             ${sidebarView()}
@@ -21,7 +28,12 @@ export default class OrderFormView extends AbstractView {
     bind () {
         const btn = this.element.querySelector('.order-form__btn');
         btn.addEventListener('click', this.onClick);
+
+        const addRowBtn = this.element.querySelector('.js-add-row');
+        addRowBtn.addEventListener('click', this.onRowAdd);
     }
 
     onClick () {}
+
+    onRowAdd () {}
 }

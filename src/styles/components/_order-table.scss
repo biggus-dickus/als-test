@@ -66,6 +66,10 @@
     border-bottom: 2px solid fade-out($primaryDark, .85);
     font-size: 18px;
     line-height: 1.2;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   &__input {

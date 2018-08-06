@@ -1,13 +1,24 @@
 /**
  * Render form <select> with options provided in an array of objects.
  * @param {Array} options
- * @param {string} className
+ * @param {string} selectedOption
+ * @param {Array} classList
  * @param {string} name
  * @param {string} id
  * @return {string}
  */
-export default function renderSelect (options, className, name, id) {
-    const selectOpions = options.map((opt) => `<option value=${opt.value}>${opt.name}</option>`);
+export default function renderSelect (options, selectedOption, {classList, name, id}) {
+    const selectOpions = options.map((opt) => {
+        const selectedAttr = (opt.value === selectedOption) ? 'selected' : '';
 
-    return `<select name=${name} id=${id} class=${className}>${selectOpions}</select>`;
+        return `
+        <option value="${opt.value}" ${selectedAttr}>
+            ${opt.name}
+        </option>`;
+    });
+
+    return `
+        <select name="${name}" id="${id}" class="${classList.join(' ')}">
+            ${selectOpions}
+        </select>`;
 }
