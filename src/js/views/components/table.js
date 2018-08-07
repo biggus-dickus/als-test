@@ -22,7 +22,7 @@ export default function renderTable (rows) {
 
         return tints.map((tint, i) => {
             const select = selectView(selectOptions, tint.tint, {
-                classList: ['select', 'order-table__input'],
+                class: 'select order-table__input',
                 name: 'tint-' + i,
                 id: 'tint-' + i
             });
@@ -64,7 +64,7 @@ export default function renderTable (rows) {
     });
 
     return `
-        <table class="order-table order-form__table">
+        <table class="order-table order-form__table js-table">
             <thead>
             <tr>
                 <th class="order-table__color-th">Цвет</th>

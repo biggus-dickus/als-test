@@ -26,6 +26,8 @@ export default class OrderFormView extends AbstractView {
     }
 
     bind () {
+        this.table = this.element.querySelector('.js-table');
+
         const btn = this.element.querySelector('.order-form__btn');
         btn.addEventListener('click', this.onClick);
 
