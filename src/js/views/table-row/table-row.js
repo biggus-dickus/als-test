@@ -1,17 +1,16 @@
-import insertTemplate from '../../utilities/insert-template';
 import TableRowFiew from './table-row-view';
 
 export default class TableRow {
-    constructor () {
-        this._view = new TableRowFiew({loh: 'pidr'});
+    constructor (rowData) {
+        this._view = new TableRowFiew(rowData);
     }
 
     render (container) {
         this._view.onRemove = (e) => {
-            console.dir(e.target);
             e.target.parentNode.parentNode.remove();
+            this._view.removeBtn.removeEventListener('click', this._view.onRemove);
         };
 
-        insertTemplate(this._view.element, container);
+        container.appendChild(this._view.element);
     }
 }

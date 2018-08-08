@@ -1,3 +1,5 @@
+import {DICTIONARY} from '../../data/data';
+import getRandomInt from '../../utilities/random-number';
 import insertTemplate from '../../utilities/insert-template';
 
 import appState from '../../state/state';
@@ -12,11 +14,21 @@ export default class OrderForm {
     render () {
         this._view.onClick = (e) => {
             e.preventDefault();
-            console.dir(e);
+            alert('Не дови на меня!');
         };
 
-        this._view.onRowAdd = (e) => {
-            new TableRow().render(this._view.table.tBodies[0]);
+        this._view.onRowAdd = () => {
+            new TableRow({
+                tint: 'cyan',
+                index: getRandomInt(4, 10),
+                isFirstRow: false,
+                totalRows: 4,
+                color: DICTIONARY['blue'],
+                isChecked: true,
+                amount: getRandomInt(1, 5),
+                unit: DICTIONARY['L'],
+                container: DICTIONARY.can
+            }).render(this._view.table.tBodies[0]);
         };
 
         insertTemplate(this._view.element);

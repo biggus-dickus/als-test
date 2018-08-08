@@ -1,4 +1,3 @@
-import {DICTIONARY} from '../../data/data';
 import {SHADES_OF_BLUE} from '../../data/data';
 
 import AbstractView from '../view';
@@ -11,12 +10,62 @@ export default class TableRowView extends AbstractView {
     }
 
     get template () {
-        return `<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td><button type="button">Remove</button></td></tr>`;
+        const {_data} = this;
+        if (!_data || !Object.keys(_data).length) {
+            throw Error('To render the row, data must be provided.');
+        }
+
+        const selectOptions = [];
+        Object.entries(SHADES_OF_BLUE)
+            .map(([en, ru]) => selectOptions.push({
+                name: ru.charAt(0).toUpperCase() + ru.substr(1),
+                value: en
+            }));
+
+        const select = selectView(selectOptions, _data.tint, {
+            class: 'select order-table__input',
+            name: `tint-${_data.index}`,
+            id: `tint-${_data.index}`
+        });
+
+        const firstCell = (_data.isFirstRow) ?
+            `<td rowspan="${_data.totalRows}" class="order-table__rowspan-td">
+                <span class="order-table__color-val">${_data.color}</span>
+            </td>` : '';
+
+        const checkboxCell = `
+            <td>
+                <input type="checkbox" class="checkbox-input visually-hidden" id="toggle-${_data.tint}" checked=${_data.isChecked}>
+                <label for="toggle-${_data.tint}" class="order-table__label" title="Отметить оттенок">
+                 <span class="visually-hidden">Отметить оттенок</span>
+              </label>
+            </td>`;
+
+        const selectCell = `<td>${select}</td>`;
+
+        const amountCell = `
+            <td class="order-table__amount-td">
+                <input type="number" name="${_data.tint}-amount" class="text-input order-table__num-input" value="${_data.amount}">
+                <span class="order-table__amount">${_data.unit}</span>
+            </td>`;
+
+        const containerCell = `<td class="order-table__unit-td">${_data.container}</td>`;
+
+        const btnCell = `
+            <td>
+                <button type="button" class="js-remove-row remove-btn order-table__remove" title="Убрать оттенок">
+                     <span class="visually-hidden">Убрать оттенок</span>
+                </button>
+            </td>`;
+
+        const cells = [firstCell, checkboxCell, selectCell, amountCell, containerCell, btnCell].filter((cell) => cell).join('');
+
+        return `<tr>${cells}</tr>`;
     }
 
     bind () {
-        const rm = this.element.querySelector('button');
-        rm.onclick = this.onRemove;
+        this.removeBtn = this.element.querySelector('.js-remove-row');
+        this.removeBtn.addEventListener('click', this.onRemove);
     }
 
     onRemove () {}
