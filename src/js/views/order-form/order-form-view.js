@@ -27,17 +27,25 @@ export default class OrderFormView extends AbstractView {
 
     bind () {
         this.body = this.element.querySelector('.js-body');
-        this.table = this.element.querySelector('.js-table');
-        this.rowSpanCell = this.element.querySelector('.js-rowspan');
+        this.title = this.body.querySelector('.js-title');
 
-        const btn = this.element.querySelector('.order-form__btn');
-        btn.addEventListener('click', this.onClick);
+        this.table = this.body.querySelector('.js-table');
+        this.rowSpanCell = this.table.querySelector('.js-rowspan');
+
+        this.masterCheckbox = this.table.querySelector('.js-master-checkbox');
+        const masterRemove = this.table.querySelector('.js-master-remove');
 
         const addRowBtn = this.element.querySelector('.js-add-row');
+        this.submitBtn = this.element.querySelector('.order-form__btn');
+
         addRowBtn.addEventListener('click', this.onRowAdd);
+        this.masterCheckbox.addEventListener('change', this.onAllRowsToggle);
+        masterRemove.addEventListener('click', this.onAllRowsRemove);
+        this.submitBtn.addEventListener('click', this.onSubmit);
     }
 
-    onClick () {}
-
     onRowAdd () {}
+    onAllRowsToggle () {}
+    onAllRowsRemove () {}
+    onSubmit () {}
 }

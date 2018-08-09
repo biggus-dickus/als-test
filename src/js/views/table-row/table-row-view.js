@@ -35,8 +35,8 @@ export default class TableRowView extends AbstractView {
 
         const checkboxCell = `
             <td>
-                <input type="checkbox" class="checkbox-input visually-hidden" id="toggle-${_data.tint}" checked=${_data.isChecked} data-index="${_data.rowIndex}">
-                <label for="toggle-${_data.tint}" class="order-table__label" title="Отметить оттенок">
+                <input type="checkbox" class="checkbox-input visually-hidden js-toggle-row" id="toggle-${_data.tint}-${_data.rowIndex}" checked=${_data.isChecked} data-index="${_data.rowIndex}">
+                <label for="toggle-${_data.tint}-${_data.rowIndex}" class="order-table__label" title="Отметить оттенок">
                  <span class="visually-hidden">Отметить оттенок</span>
               </label>
             </td>`;

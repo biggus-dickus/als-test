@@ -1,33 +1,24 @@
-/**
- * Etot trudni russky yezik.
- * @param {int} tintsCount
- * @return {string}
- */
-export default function renderTitle (tintsCount) {
-    let textNode = '';
-
-    switch (tintsCount) {
+export const generateTitleText = (num) => {
+    switch (num) {
         case 0:
-            textNode = `Выбрано ${tintsCount} оттенков`;
-            break;
+            return 'Добавьте оттенок';
         case 1:
-            textNode = `Выбран ${tintsCount} оттенок`;
-            break;
+            return `Выбран ${num} оттенок`;
         case 2:
         case 3:
         case 4:
-            textNode = `Выбраны ${tintsCount} оттенка`;
-            break;
+            return `Выбраны ${num} оттенка`;
         case 5:
         case 6:
         case 7:
         case 8:
         case 9:
-            textNode = `Выбраны ${tintsCount} оттенков`;
-            break;
+            return `Выбраны ${num} оттенков`;
         default:
-            textNode = `Выбрано оттенков: ${tintsCount}`;
+            return `Выбрано оттенков: ${num}`;
     }
+};
 
-    return `<h2 class="title title--secondary order-form__title">${textNode}</h2>`;
+export default function renderTitle (tintsCount) {
+    return `<h2 class="title title--secondary order-form__title js-title">${generateTitleText(tintsCount)}</h2>`;
 }

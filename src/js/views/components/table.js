@@ -34,7 +34,7 @@ export default function renderTable (rows) {
 
             const checkboxCell = `
                 <td>
-                    <input type="checkbox" class="checkbox-input visually-hidden" id="toggle-${tint.tint}" checked=${tint.isChecked}>
+                    <input type="checkbox" class="checkbox-input visually-hidden js-toggle-row" id="toggle-${tint.tint}" checked=${tint.isChecked}>
                     <label for="toggle-${tint.tint}" class="order-table__label" title="Отметить ${SHADES_OF_BLUE[tint.tint]}">
                      <span class="visually-hidden">Отметить ${SHADES_OF_BLUE[tint.tint]}</span>
                   </label>
@@ -52,7 +52,7 @@ export default function renderTable (rows) {
 
             const btnCell = `
                 <td>
-                    <button type="button" class="remove-btn order-table__remove" title="Убрать ${SHADES_OF_BLUE[tint.tint]}">
+                    <button type="button" class="remove-btn order-table__remove js-remove-row" title="Убрать ${SHADES_OF_BLUE[tint.tint]}">
                          <span class="visually-hidden">Убрать ${SHADES_OF_BLUE[tint.tint]}</span>
                     </button>
                 </td>`;
@@ -69,7 +69,7 @@ export default function renderTable (rows) {
             <tr>
                 <th class="order-table__color-th">Цвет</th>
                 <th class="order-table__checkbox-th">
-                    <input type="checkbox" class="checkbox-input visually-hidden" id="toggle-all" checked>
+                    <input type="checkbox" class="checkbox-input visually-hidden js-master-checkbox" id="toggle-all" checked>
                     <label for="toggle-all" class="order-table__label" title="Отметить все">
                         <span class="visually-hidden">Отметить все</span>
                     </label>
@@ -78,7 +78,7 @@ export default function renderTable (rows) {
                 <th class="order-table__amount-th">Объем</th>
                 <th class="order-table__unit-th">Упаковка</th>
                 <th class="order-table__buttons-th">
-                    <button type="button" class="remove-btn order-table__remove" title="Убрать все">
+                    <button type="button" class="remove-btn order-table__remove js-master-remove" title="Убрать все">
                     <span class="visually-hidden">Убрать все</span>
                     </button>
                 </th>

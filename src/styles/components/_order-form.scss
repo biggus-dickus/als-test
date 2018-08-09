@@ -110,8 +110,15 @@
     margin-top: 25px;
     font-size: 22px;
     color: $primaryLight;
-    box-shadow: 0 3px 5px rgba(241, 163, 80, 0.45);
-    background-image: linear-gradient($themeAccent, #f1a34e);
+
+    &:not(:disabled) {
+      box-shadow: 0 3px 5px rgba(241, 163, 80, 0.45);
+      background-image: linear-gradient($themeAccent, #f1a34e);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   &__add {
