@@ -28,7 +28,7 @@ export default function renderTable (rows) {
             });
 
             const firstCell = (i === 0) ?
-                `<td rowspan="${tints.length}" class="order-table__rowspan-td">
+                `<td rowspan="${tints.length}" class="order-table__rowspan-td js-rowspan">
                     <span class="order-table__color-val">${DICTIONARY[color]}</span>
                 </td>` : '';
 

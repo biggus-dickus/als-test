@@ -24,18 +24,18 @@ export default class TableRowView extends AbstractView {
 
         const select = selectView(selectOptions, _data.tint, {
             class: 'select order-table__input',
-            name: `tint-${_data.index}`,
-            id: `tint-${_data.index}`
+            name: `tint-${_data.rowIndex}`,
+            id: `tint-${_data.rowIndex}`
         });
 
         const firstCell = (_data.isFirstRow) ?
-            `<td rowspan="${_data.totalRows}" class="order-table__rowspan-td">
+            `<td rowspan="${_data.rowIndex}" class="order-table__rowspan-td js-rowspan">
                 <span class="order-table__color-val">${_data.color}</span>
             </td>` : '';
 
         const checkboxCell = `
             <td>
-                <input type="checkbox" class="checkbox-input visually-hidden" id="toggle-${_data.tint}" checked=${_data.isChecked}>
+                <input type="checkbox" class="checkbox-input visually-hidden" id="toggle-${_data.tint}" checked=${_data.isChecked} data-index="${_data.rowIndex}">
                 <label for="toggle-${_data.tint}" class="order-table__label" title="Отметить оттенок">
                  <span class="visually-hidden">Отметить оттенок</span>
               </label>
@@ -45,7 +45,7 @@ export default class TableRowView extends AbstractView {
 
         const amountCell = `
             <td class="order-table__amount-td">
-                <input type="number" name="${_data.tint}-amount" class="text-input order-table__num-input" value="${_data.amount}">
+                <input type="number" name="${_data.tint}-amount" class="text-input order-table__num-input" value="${_data.amount}" data-index="${_data.rowIndex}">
                 <span class="order-table__amount">${_data.unit}</span>
             </td>`;
 
@@ -53,7 +53,7 @@ export default class TableRowView extends AbstractView {
 
         const btnCell = `
             <td>
-                <button type="button" class="js-remove-row remove-btn order-table__remove" title="Убрать оттенок">
+                <button type="button" class="js-remove-row remove-btn order-table__remove" data-index="${_data.rowIndex}" title="Убрать оттенок">
                      <span class="visually-hidden">Убрать оттенок</span>
                 </button>
             </td>`;

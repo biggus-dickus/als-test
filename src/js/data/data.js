@@ -1,3 +1,5 @@
+import getRandomInt from '../utilities/random-number';
+
 export const SHADES_OF_BLUE = {
     'cyan': 'циан',
     'deep-blue': 'глубокий',

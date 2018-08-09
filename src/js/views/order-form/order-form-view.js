@@ -16,7 +16,7 @@ export default class OrderFormView extends AbstractView {
 
         return `
         <form action="?" method="get" class="order-form">
-            <section class="order-form__body">
+            <section class="order-form__body js-body">
                 ${titleView(colors.blue.length)}
                 ${tableView(colors)}
                 ${buttonView()}
@@ -26,7 +26,9 @@ export default class OrderFormView extends AbstractView {
     }
 
     bind () {
+        this.body = this.element.querySelector('.js-body');
         this.table = this.element.querySelector('.js-table');
+        this.rowSpanCell = this.element.querySelector('.js-rowspan');
 
         const btn = this.element.querySelector('.order-form__btn');
         btn.addEventListener('click', this.onClick);

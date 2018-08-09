@@ -6,7 +6,7 @@ class AppState {
     }
 
     setState (newState) {
-        this.props = {...this.props, newState};
+        this.props = newState;
     }
 }
 
