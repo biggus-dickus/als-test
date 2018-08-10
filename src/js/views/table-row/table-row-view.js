@@ -12,7 +12,7 @@ export default class TableRowView extends AbstractView {
     get template () {
         const {_data} = this;
         if (!_data || !Object.keys(_data).length) {
-            throw Error('To render the row, data must be provided.');
+            throw Error('To render the row, color data must be provided.');
         }
 
         const selectOptions = [];

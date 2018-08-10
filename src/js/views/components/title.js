@@ -1,7 +1,7 @@
 export const generateTitleText = (num) => {
     switch (num) {
         case 0:
-            return 'Добавьте оттенок';
+            return `Выбрано ${num} оттенков`;
         case 1:
             return `Выбран ${num} оттенок`;
         case 2:

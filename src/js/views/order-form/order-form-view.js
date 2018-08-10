@@ -18,7 +18,7 @@ export default class OrderFormView extends AbstractView {
         <form action="?" method="get" class="order-form">
             <section class="order-form__body js-body">
                 ${titleView(colors.blue.length)}
-                ${tableView(colors)}
+                ${tableView()}
                 ${buttonView()}
             </section>
             ${sidebarView()}
@@ -30,7 +30,6 @@ export default class OrderFormView extends AbstractView {
         this.title = this.body.querySelector('.js-title');
 
         this.table = this.body.querySelector('.js-table');
-        this.rowSpanCell = this.table.querySelector('.js-rowspan');
 
         this.masterCheckbox = this.table.querySelector('.js-master-checkbox');
         const masterRemove = this.table.querySelector('.js-master-remove');

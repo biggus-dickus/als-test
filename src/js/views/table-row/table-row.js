@@ -19,7 +19,7 @@ export default class TableRow {
             e.target.parentNode.parentNode.remove();
             this._view.removeBtn.removeEventListener('click', this._view.onRemove);
 
-            this._updateIndexes();
+            this._updateIndexes(e.target.dataset.index);
         };
 
         container.appendChild(this._view.element);

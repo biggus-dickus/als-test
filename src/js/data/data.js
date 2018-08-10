@@ -1,5 +1,3 @@
-import getRandomInt from '../utilities/random-number';
-
 export const SHADES_OF_BLUE = {
     'cyan': 'циан',
     'deep-blue': 'глубокий',
@@ -10,7 +8,7 @@ export const SHADES_OF_BLUE = {
     'sky-blue': 'небесный'
 };
 
-export const DICTIONARY = {
+export const VOCABULARY = {
     'L': 'л',
     can: 'банка',
     package: 'состав заказа',
@@ -20,35 +18,35 @@ export const DICTIONARY = {
 };
 
 export const INITIAL_STATE = Object.freeze({
-    currentSection: DICTIONARY.package,
+    currentSection: VOCABULARY.package,
     colors: {
         blue: [
             {
                 tint: 'sky-blue',
                 amount: 1,
-                unit: DICTIONARY['L'],
-                container: DICTIONARY.can,
+                unit: VOCABULARY['L'],
+                container: VOCABULARY.can,
                 isChecked: true
             },
             {
                 tint: 'light-blue',
                 amount: 2,
-                unit: DICTIONARY['L'],
-                container: DICTIONARY.can,
+                unit: VOCABULARY['L'],
+                container: VOCABULARY.can,
                 isChecked: true
             },
             {
                 tint: 'deep-blue',
                 amount: 1,
-                unit: DICTIONARY['L'],
-                container: DICTIONARY.can,
+                unit: VOCABULARY['L'],
+                container: VOCABULARY.can,
                 isChecked: true
             },
             {
                 tint: 'royal-blue',
                 amount: 3,
-                unit: DICTIONARY['L'],
-                container: DICTIONARY.can,
+                unit: VOCABULARY['L'],
+                container: VOCABULARY.can,
                 isChecked: true
             }
         ]
