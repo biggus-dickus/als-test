@@ -8,11 +8,11 @@ import titleView from '../components/title';
 export default class OrderFormView extends AbstractView {
     constructor (state) {
         super();
-        this._state = state;
+        this._state = state.state;
     }
 
     get template () {
-        const {colors} = this._state.props;
+        const {colors} = this._state;
 
         return `
         <form action="?" method="get" class="order-form">

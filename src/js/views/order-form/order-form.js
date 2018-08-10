@@ -49,13 +49,13 @@ export default class OrderForm {
 
         const tintToadd = (initialTint) ? initialTint : newTint;
         if (!initialTint) {
-            OrderForm.addTint(newTint);
+            appState.addTint(newTint);
         }
 
         new TableRow({
             ...tintToadd,
-            isFirstRow: (initialTint) ? isFirst : appState.props.colors.blue.length === 1,
-            rowIndex: (index >= 0) ? index : appState.props.colors.blue.length - 1,
+            isFirstRow: (initialTint) ? isFirst : appState.state.colors.blue.length === 1,
+            rowIndex: (index >= 0) ? index : appState.state.colors.blue.length - 1,
             color: VOCABULARY['blue'],
             onRowRemove: this.removeRow,
             updateIndexes: this._updateIndexes
@@ -65,29 +65,31 @@ export default class OrderForm {
             this._view.submitBtn.removeAttribute('disabled');
         }
 
-        this._updateRowspan(appState.props.colors.blue.length);
+        this._updateRowspan(appState.state.colors.blue.length);
         this._updateTitle();
     }
 
     /**
      * Remove row from table, update state.
-     * @param {int} index
+     * @param {int} rowIndex
      */
-    removeRow (index) {
+    removeRow (rowIndex) {
         this._rowSpanCell = this._view.table.querySelector('.js-rowspan');
-        OrderForm.removeTint(index);
-        this._updateRowspan(appState.props.colors.blue.length);
+        appState.removeTint(rowIndex);
+        this._updateRowspan(appState.state.colors.blue.length);
         this._updateTitle();
 
-        if (!appState.props.colors.blue.length) {
+        if (!appState.state.colors.blue.length) {
             this._view.submitBtn.disabled = true;
         }
     }
 
     onAllRowsToggle () {
-        OrderForm.toggleAllTints(this._view.masterCheckbox.checked);
-
         const checkboxes = this._view.table.querySelectorAll('.js-toggle-row');
+        if (!checkboxes.length) return;
+
+        appState.toggleAllTints(this._view.masterCheckbox.checked);
+
         for (let checkbox of checkboxes) {
             checkbox.checked = this._view.masterCheckbox.checked;
         }
@@ -96,7 +98,8 @@ export default class OrderForm {
     }
 
     onAllRowsRemove () {
-        OrderForm.removeAllTints();
+        if (!this._view.table.tBodies[0].children.length) return;
+        appState.removeAllTints();
 
         this._view.table.tBodies[0].innerHTML = '';
         this._view.submitBtn.disabled = true;
@@ -119,7 +122,7 @@ export default class OrderForm {
     _onFirstRowRemove (rowIndex, container) {
         if (+rowIndex === 0 && container) {
             container.insertBefore(this._rowSpanCell, container.children[0]);
-            this._updateRowspan(appState.props.colors.blue.length);
+            this._updateRowspan(appState.state.colors.blue.length);
         }
 
         this._rowSpanCell = null;
@@ -130,7 +133,7 @@ export default class OrderForm {
      * @private
      */
     _updateTitle () {
-        const activeTints = appState.props.colors.blue.filter((tint) => tint.isChecked);
+        const activeTints = appState.state.colors.blue.filter((tint) => tint.isChecked);
         this._view.title.textContent = generateTitleText(activeTints.length);
     }
 
@@ -164,50 +167,6 @@ export default class OrderForm {
     }
 
     _init () {
-        appState.props.colors.blue.forEach((color, i) => this.addRow(null, i === 0, color, i));
-    }
-
-    /**
-     * Push new tint to appState array.
-     * @param {Object} color
-     */
-    static addTint (color) {
-        const newState = {...appState.props};
-        const newTints = newState.colors.blue;
-
-        newTints.push(color);
-        appState.setState(newState);
-    }
-
-    /**
-     * Remove the specified tint from appState array.
-     * @param {int} colorIndex
-     */
-    static removeTint (colorIndex) {
-        const newState = {...appState.props};
-        const newTints = newState.colors.blue;
-
-        newTints.splice(colorIndex, 1);
-        appState.setState(newState);
-    }
-
-    /**
-     * Check or uncheck all tints in the appState.
-     * @param {boolean} flag
-     */
-    static toggleAllTints (flag) {
-        const newState = {...appState.props};
-        const newTints = newState.colors.blue;
-
-        newTints.forEach((color) => color.isChecked = flag);
-        appState.setState(newState);
-    }
-
-    static removeAllTints () {
-        const newState = {...appState.props};
-        const newTints = newState.colors.blue;
-
-        newTints.length = 0;
-        appState.setState(newState);
+        appState.state.colors.blue.forEach((color, i) => this.addRow(null, i === 0, color, i));
     }
 }
