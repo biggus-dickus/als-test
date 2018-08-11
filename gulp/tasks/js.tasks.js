@@ -29,7 +29,7 @@ gulp.task('js:prod', () => {
                 babelrc: false,
                 exclude: 'node_modules/**',
                 presets: [['env', { modules: false }]],
-                plugins: ['external-helpers']
+                plugins: ['external-helpers', 'transform-object-rest-spread']
             })]
         }, {
             file: 'script.js',
