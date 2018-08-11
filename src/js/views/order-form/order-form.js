@@ -16,7 +16,7 @@ export default class OrderForm {
         this.removeRow = this.removeRow.bind(this);
         this.onAllRowsRemove = this.onAllRowsRemove.bind(this);
         this.onAllRowsToggle = this.onAllRowsToggle.bind(this);
-        this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.onRowToggle = this.onRowToggle.bind(this);
         this._updateIndexes = this._updateIndexes.bind(this);
     }
 
@@ -24,7 +24,7 @@ export default class OrderForm {
         this._view.onAllRowsToggle = this.onAllRowsToggle;
         this._view.onAllRowsRemove = this.onAllRowsRemove;
         this._view.onRowAdd = this.addRow;
-        this._view.onSubmit = this.onFormSubmit;
+        this._view.onSubmit = OrderForm.onFormSubmit;
 
         insertTemplate(this._view.element);
         this._init();
@@ -58,6 +58,7 @@ export default class OrderForm {
             rowIndex: (index >= 0) ? index : appState.state.colors.blue.length - 1,
             color: VOCABULARY['blue'],
             onRowRemove: this.removeRow,
+            onRowToggle: this.onRowToggle,
             updateIndexes: this._updateIndexes
         }).render(this._view.table.tBodies[0]);
 
@@ -84,6 +85,18 @@ export default class OrderForm {
         }
     }
 
+    /**
+     * Update 'isChecked' prop of selected tint, update title accordingly.
+     * @param {int} rowIndex
+     * @param {boolean} toggleFlag
+     */
+    onRowToggle (rowIndex, toggleFlag) {
+        appState.changeValue(rowIndex, 'isChecked', toggleFlag);
+        this._updateTitle();
+
+        this._view.submitBtn.disabled = !appState.state.colors.blue.some((tint) => tint.isChecked);
+    }
+
     onAllRowsToggle () {
         const checkboxes = this._view.table.querySelectorAll('.js-toggle-row');
         if (!checkboxes.length) return;
@@ -95,6 +108,7 @@ export default class OrderForm {
         }
 
         this._updateTitle();
+        this._view.submitBtn.disabled = !appState.state.colors.blue.some((tint) => tint.isChecked);
     }
 
     onAllRowsRemove () {
@@ -105,11 +119,6 @@ export default class OrderForm {
         this._view.submitBtn.disabled = true;
 
         this._updateTitle();
-    }
-
-    onFormSubmit (e) {
-        e.preventDefault();
-        alert('Не дови на меня!');
     }
 
     /**
@@ -167,6 +176,23 @@ export default class OrderForm {
     }
 
     _init () {
-        appState.state.colors.blue.forEach((color, i) => this.addRow(null, i === 0, color, i));
+        appState.state.colors.blue
+            .forEach((color, i) => this.addRow(null, i === 0, color, i));
+    }
+
+    static onFormSubmit (e) {
+        e.preventDefault();
+        const formData = [];
+
+        appState.state.colors.blue
+            .filter((tint) => tint.isChecked)
+            .forEach((item, i) => {
+                const j = ++i;
+                formData.push(`tint${j}=${item.tint}&amount${j}=${item.amount}`);
+            });
+
+        alert('Форма отправит следующие данные:' + '\n'
+            + 'color=blue&' + '\n'
+            + formData.join('\n'));
     }
 }

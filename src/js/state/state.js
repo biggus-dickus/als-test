@@ -11,13 +11,13 @@ class AppState {
 
     /**
      * Push new tint to tints array.
-     * @param {Object} color
+     * @param {Object} tint
      */
-    addTint (color) {
+    addTint (tint) {
         const newState = {...this.state};
         const newTints = newState.colors.blue;
 
-        newTints.push(color);
+        newTints.push(tint);
         this.setState(newState);
     }
 
@@ -55,7 +55,7 @@ class AppState {
 
     /**
      * Change the specified tint value.
-     * @param {int} index
+     * @param {int|string} index
      * @param {string} propName
      * @param {*} newValue
      */

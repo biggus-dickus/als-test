@@ -23,9 +23,10 @@ export default class TableRowView extends AbstractView {
             }));
 
         const select = selectView(selectOptions, _data.tint, {
-            class: 'select order-table__input',
+            class: 'select order-table__input js-select',
             name: `tint-${_data.rowIndex}`,
-            id: `tint-${_data.rowIndex}`
+            id: `tint-${_data.rowIndex}`,
+            'data-index': _data.rowIndex
         });
 
         const firstCell = (_data.isFirstRow) ?
@@ -45,7 +46,7 @@ export default class TableRowView extends AbstractView {
 
         const amountCell = `
             <td class="order-table__amount-td">
-                <input type="number" name="${_data.tint}-amount" class="text-input order-table__num-input" value="${_data.amount}" data-index="${_data.rowIndex}">
+                <input type="number" name="${_data.tint}-amount" class="text-input order-table__num-input js-input" value="${_data.amount}" data-index="${_data.rowIndex}" min="1" max="5">
                 <span class="order-table__amount">${_data.unit}</span>
             </td>`;
 
@@ -66,7 +67,19 @@ export default class TableRowView extends AbstractView {
     bind () {
         this.removeBtn = this.element.querySelector('.js-remove-row');
         this.removeBtn.addEventListener('click', this.onRemove);
+
+        this.checkbox = this.element.querySelector('.js-toggle-row');
+        this.checkbox.addEventListener('change', this.onRowToggle);
+
+        this.select = this.element.querySelector('.js-select');
+        this.select.addEventListener('change', this.onSelectChange);
+
+        this.input = this.element.querySelector('.js-input');
+        this.input.addEventListener('change', this.onInputChange);
     }
 
     onRemove () {}
+    onRowToggle () {}
+    onSelectChange () {}
+    onInputChange () {}
 }
